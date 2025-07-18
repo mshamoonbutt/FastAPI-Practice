@@ -12,3 +12,10 @@ async def read_root():
 async def create_item(item: str):
     items.append(item)
     return {"item": item}
+
+@app.put("/items/{item_id}")
+async def update_item(item_id: int, item: str):
+    if 0 <= item_id < len(items):
+        items[item_id] = item
+        return {"item": item}
+    return {"error": "Item not found"}
