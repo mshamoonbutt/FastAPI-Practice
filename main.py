@@ -19,3 +19,8 @@ async def update_item(item_id: int, item: str):
         items[item_id] = item
         return {"item": item}
     return {"error": "Item not found"}
+
+
+@app.get("/items")
+async def read_items():     
+    return {"items": items}
